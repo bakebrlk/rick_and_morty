@@ -2,19 +2,19 @@ import 'package:equatable/equatable.dart';
 import 'package:rick_and_morty/feature/domain/entities/location_entity.dart';
 
 class PersonEntity extends Equatable {
-  int id;
-  String name;
-  String status;
-  String species;
-  String type;
-  String gender;
-  LocationEntity origin;
-  LocationEntity location;
-  String image;
-  List<String> episode;
-  DateTime created;
+  final int id;
+  final String name;
+  final String status;
+  final String species;
+  final String type;
+  final String gender;
+  final LocationEntity origin;
+  final LocationEntity location;
+  final String image;
+  final List<String> episode;
+  final DateTime created;
 
-  PersonEntity({
+  const PersonEntity({
     required this.id,
     required this.name,
     required this.status,
