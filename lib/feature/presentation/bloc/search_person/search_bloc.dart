@@ -12,7 +12,6 @@ class PersonSearchBloc extends Bloc<PersonSearchEvent, PersonSearchState> {
 
   PersonSearchBloc({required this.searchPerson}) : super(PersonEmpty());
 
-  @override
   Stream<PersonSearchState> mapEventToState(PersonSearchEvent event) async* {
     if (event is SearchPerson) {
       yield* _mapFetchPersonsToState(event.query);
