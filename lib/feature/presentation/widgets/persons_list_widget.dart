@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/feature/domain/entities/person_entity.dart';
 import 'package:rick_and_morty/feature/presentation/bloc/person_list_cubit/person_list_cubit.dart';
@@ -10,6 +7,8 @@ import 'package:rick_and_morty/feature/presentation/widgets/person_card_widget.d
 
 class PersonsList extends StatelessWidget {
   final scrollController = ScrollController();
+
+  PersonsList({super.key});
 
   void setupScrollController(BuildContext context) {
     scrollController.addListener(() {
