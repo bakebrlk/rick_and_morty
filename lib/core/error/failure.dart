@@ -7,20 +7,16 @@ class Failure extends Equatable {
 
 class ServerFailure implements Failure {
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 
   @override
-  // TODO: implement stringify
   bool? get stringify => null;
 }
 
 class CacheFailure implements Failure {
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 
   @override
-  // TODO: implement stringify
   bool? get stringify => null;
 }

@@ -10,7 +10,8 @@ class NetworkInfoImpl implements NetworkInfo {
   NetworkInfoImpl({required this.connectionChecker});
 
   @override
-  // TODO: implement isConnected
-  Future<bool> get isConnected => connectionChecker.hasConnection;
-  
-}
+Future<bool> get isConnected async {
+  final result = await connectionChecker.hasConnection;
+  print('isConnected: $result');
+  return true;
+}}

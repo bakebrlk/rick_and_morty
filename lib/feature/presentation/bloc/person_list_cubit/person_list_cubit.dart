@@ -25,7 +25,7 @@ class PersonListCubit extends Cubit<PersonState> {
 
     final failureOrPerson = await getAllPerson(PagePersonParams(page: page));
 
-    failureOrPerson.fold((error) => PersonError(message: _mapFailureToMessage(error)), (character){
+    failureOrPerson.fold((error) => emit(PersonError(message: _mapFailureToMessage(error))), (character){
       page++;
       final persons = (state as PersonLoading).oldPersonsList;
       persons.addAll(character);
@@ -34,10 +34,10 @@ class PersonListCubit extends Cubit<PersonState> {
   }
 
   String _mapFailureToMessage(Failure failure) {
-    switch (failure.runtimeType) {
-      case ServerFailure _:
+    switch (failure) {
+      case ServerFailure():
         return 'Server Failure';
-      case CacheFailure _:
+      case CacheFailure():
         return 'Cache Failure';
       default:
         return 'Unexpected Error';
