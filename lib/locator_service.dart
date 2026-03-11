@@ -17,7 +17,7 @@ final sl = GetIt.instance;
 Future<void> init() async {
   // BLoC / Cubit
   sl.registerFactory(() => PersonListCubit(getAllPerson: sl()));
-  sl.registerFactory(() => PersonSearchBloc(searchPerson: sl()));
+  sl.registerFactory(() => PersonSearchBloc(searchPersons: sl()));
 
   // UseCase
   sl.registerLazySingleton(() => GetAllPerson(personRepository: sl()));

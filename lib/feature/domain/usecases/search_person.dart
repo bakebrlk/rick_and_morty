@@ -5,8 +5,8 @@ import 'package:rick_and_morty/core/usecases/usecase.dart';
 import 'package:rick_and_morty/feature/domain/entities/person_entity.dart';
 import 'package:rick_and_morty/feature/domain/repositories/person_repository.dart';
 
-class SearchPerson extends UseCase<List<PersonEntity>, SearchPersonParams> {
-  SearchPerson({required this.personRepository});
+class SearchPersons extends UseCase<List<PersonEntity>, SearchPersonParams> {
+  SearchPersons({required this.personRepository});
 
   final PersonRepository personRepository;
 

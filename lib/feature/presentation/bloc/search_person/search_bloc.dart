@@ -1,16 +1,13 @@
-import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/core/error/failure.dart';
-import 'package:rick_and_morty/feature/domain/usecases/search_person.dart'
-    hide SearchPerson;
 import 'package:rick_and_morty/feature/presentation/bloc/search_person/search_event.dart';
 import 'package:rick_and_morty/feature/presentation/bloc/search_person/search_state.dart';
+import 'package:rick_and_morty/feature/domain/usecases/search_person.dart';
 
 class PersonSearchBloc extends Bloc<PersonSearchEvent, PersonSearchState> {
-  final SearchPerson searchPerson;
+  final SearchPersons searchPersons;
 
-  PersonSearchBloc({required this.searchPerson}) : super(PersonEmpty());
+  PersonSearchBloc({required this.searchPersons}) : super(PersonEmpty());
 
   Stream<PersonSearchState> mapEventToState(PersonSearchEvent event) async* {
     if (event is SearchPerson) {
@@ -21,8 +18,8 @@ class PersonSearchBloc extends Bloc<PersonSearchEvent, PersonSearchState> {
   Stream<PersonSearchState> _mapFetchPersonsToState(String personQuery) async* {
     yield PersonSearchLoading();
 
-    final failureOrPerson = await searchPerson.call(
-      SearchPersonParams(query: personQuery) as int,
+    final failureOrPerson = await searchPersons(
+      SearchPersonParams(query: personQuery),
     );
     yield failureOrPerson.fold(
       (failure) => PersonSearchError(message: _mapFailureToMessage(failure)),
